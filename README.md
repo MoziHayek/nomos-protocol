@@ -95,7 +95,7 @@ Flagged entities are presented with a **Resolution Choice Menu** rather than aut
 1. **Voluntary Forfeiture**
 
    * Available to all users
-   * Rewards routed to the Universal Base Liquidity (UBL) pool
+   * Rewards routed to the Universal Basic Labor (UBL) pool
    * No penalty, no strike
 
 2. **AI-Assisted Mitigation**
