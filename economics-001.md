@@ -2,8 +2,8 @@
 
 | Field | Value |
 | :--- | :--- |
-| **Title** | Counter-Cyclical Velocity Minting (CCVM) |
-| **Author** | Architect |
+| **Cybernetic Minting Engine** | Counter-Cyclical Velocity Minting (CCVM) |
+| **Mozi Hayek** | Architect |
 | **Status** | DRAFT |
 | **Type** | Core / Economic |
 | **Created** | 2026-02-11 |
