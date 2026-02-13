@@ -61,6 +61,21 @@ $$0.1 \leq \frac{V_{target}}{V_{now}} \leq 2.0$$
 
 * **Max Limit:** Rewards can never exceed $2x$ base rate.
 * **Min Limit:** Rewards can never fall below $0.1x$ base rate (minting never truly stops, just slows).
+### 4.3. The Epoch Identity Ceiling (Daily Human Limit)
+To prevent systemic value extraction while permitting infinite transaction velocity, Nomos enforces a time-weighted reward ceiling at the **Identity Layer** rather than the Transaction Layer.
+
+Because every wallet is cryptographically bound to a unique ZK-Nullifier (representing one verified human), the protocol tracks the total rewards minted by each human over a rolling 24-hour epoch.
+
+**The Logic:**
+* $\Sigma R_{24h}$: The total UNITT rewards accumulated by a specific ZK-Nullifier in the last 24 hours.
+* $C_{daily}$: The maximum protocol subsidy allowed per human per day (e.g., 50 UNITT).
+
+**The Rule:**
+* If $\Sigma R_{24h} < C_{daily}$: The transaction mints the standard velocity reward.
+* If $\Sigma R_{24h} \geq C_{daily}$: The transaction is processed and settled flawlessly, but it mints **0 UNITT** in rewards. 
+
+**Economic Rationale:**
+This removes arbitrary transaction-count limits (e.g., "10 transactions per day") which stifle legitimate economic activity. A user can transact 100 times a day without friction. However, it completely neutralizes "Whale Mining." A high-net-worth individual executing massive trades can still utilize the network, but their ability to extract newly minted supply is strictly capped to the exact same daily limit as every other human in the protocol.
 
 ## 5. The 3-Way Split (Distribution)
 Once $R_{tx}$ is calculated, it is minted and split immediately via the `VelocityMint.sol` contract:
