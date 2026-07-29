@@ -1,0 +1,190 @@
+<style>
+.layer { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 10px; overflow: hidden; cursor: pointer; transition: box-shadow 0.2s; }
+.layer:hover { box-shadow: 0 0 0 1px var(--color-border-secondary); }
+.layer-header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+.layer-num { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; min-width: 60px; text-align: center; }
+.layer-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); flex: 1; }
+.layer-tag { font-size: 11px; color: var(--color-text-secondary); }
+.layer-body { padding: 0 16px 14px; display: none; }
+.layer-body.open { display: block; }
+.layer-body p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin: 0 0 10px; }
+.row { display: flex; gap: 10px; margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+.row-label { color: var(--color-text-secondary); min-width: 100px; flex-shrink: 0; font-size: 12px; }
+.row-val { color: var(--color-text-primary); flex: 1; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 10px 0; }
+.interface { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 8px 12px; margin-top: 8px; font-size: 12px; color: var(--color-text-secondary); }
+.interface span { color: var(--color-text-primary); font-weight: 500; }
+.chevron { font-size: 12px; color: var(--color-text-tertiary); transition: transform 0.2s; }
+.chevron.open { transform: rotate(180deg); }
+
+.l1 { background: var(--color-background-primary); }
+.l1 .layer-num { background: var(--color-background-info); color: var(--color-text-info); }
+.l2 .layer-num { background: var(--color-background-success); color: var(--color-text-success); }
+.l3 .layer-num { background: var(--color-background-warning); color: var(--color-text-warning); }
+.l4 .layer-num { background: var(--color-background-danger); color: var(--color-text-danger); }
+.l5 .layer-num { background: #EEEDFE; color: #534AB7; }
+.l6 .layer-num { background: #E1F5EE; color: #0F6E56; }
+.l7 .layer-num { background: #FAEEDA; color: #854F0B; }
+</style>
+
+<h2 class="sr-only">Nomos Protocol layered architecture specification, seven layers from identity to governance</h2>
+
+<div style="padding: 1rem 0;">
+
+<div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 16px; padding: 8px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+  Click any layer to expand its full specification
+</div>
+
+<!-- Layer 1 -->
+<div class="layer l1" onclick="toggle('l1')">
+  <div class="layer-header">
+    <span class="layer-num">Layer 1</span>
+    <span class="layer-title">Identity Layer</span>
+    <span class="layer-tag">Humanity verification · ZK biometrics · Sybil resistance</span>
+    <span class="chevron" id="l1-chev">▼</span>
+  </div>
+  <div class="layer-body" id="l1-body">
+    <p>The foundational layer. Establishes that every participant is a unique, living human being without storing any personally identifiable information. All higher layers depend on this guarantee.</[...]
+    <div class="divider"></div>
+    <div class="row"><span class="row-label">Responsibility</span><span class="row-val">Verify unique humanity. Issue ZK liveness proofs. Prevent Sybil attacks. Assign genesis reputation score.</span>[...]
+    <div class="row"><span class="row-label">Core mechanisms</span><span class="row-val">Recursive ZK-SNARKs · behavioral entropy capture · P2P witnessing · TEE attestation · genesis R_p = 1.0</sp[...]
+    <div class="row"><span class="row-label">What it receives</span><span class="row-val">Raw biometric input from user device (immediately discarded after proof generation)</span></div>
+    <div class="row"><span class="row-label">What it provides</span><span class="row-val">Valid ZK liveness proof — the universal credential for all higher layer participation</span></div>
+    <div class="row"><span class="row-label">Constitutional tie</span><span class="row-val">Property sovereignty · freedom from surveillance · voluntary participation</span></div>
+    <div class="interface">Interface up → <span>Infrastructure Layer</span> receives proof validity signal. No biometric data crosses this boundary — ever.</div>
+  </div>
+</div>
+
+<!-- Layer 2 -->
+<div class="layer" onclick="toggle('l2')">
+  <div class="layer-header">
+    <span class="layer-num l2">Layer 2</span>
+    <span class="layer-title">Infrastructure Layer</span>
+    <span class="layer-tag">Hydra network · sharding · data availability · node operation</span>
+    <span class="chevron" id="l2-chev">▼</span>
+  </div>
+  <div class="layer-body" id="l2-body">
+    <p>The physical and computational substrate. Handles how data is stored, validated, and transmitted across the network. Designed to run on minimal hardware — smartphones and edge devices — mak[...]
+    <div class="divider"></div>
+    <div class="row"><span class="row-label">Responsibility</span><span class="row-val">Transaction validation · state storage · peer discovery · shard management · data availability</span></div>
+    <div class="row"><span class="row-label">Core mechanisms</span><span class="row-val">Dynamic sharding · Reed-Solomon erasure coding · DAS random sampling · Verkle trees · Kademlia DHT · state[...]
+    <div class="row"><span class="row-label">What it receives</span><span class="row-val">Valid identity proofs from Layer 1 · transaction instructions from Layer 3</span></div>
+    <div class="row"><span class="row-label">What it provides</span><span class="row-val">Validated transaction records · shard state · node uptime attestations · cross-shard proof of exit</span></[...]
+    <div class="row"><span class="row-label">Key property</span><span class="row-val">No specialized hardware required. A 2026 smartphone can secure a multi-terabyte ledger storing only megabytes of s[...]
+    <div class="interface">Interface up → <span>Economic Layer</span> receives validated transaction records for reward calculation. Interface down → <span>Identity Layer</span> for proof verifica[...]
+  </div>
+</div>
+
+<!-- Layer 3 -->
+<div class="layer" onclick="toggle('l3')">
+  <div class="layer-header">
+    <span class="layer-num l3">Layer 3</span>
+    <span class="layer-title">Economic Layer</span>
+    <span class="layer-tag">Minting · reward split · velocity · scarcity · UNITT issuance</span>
+    <span class="chevron" id="l3-chev">▼</span>
+  </div>
+  <div class="layer-body" id="l3-body">
+    <p>The core value generation engine. Every verified transaction mints new UNITT distributed equally among sender, receiver, and node. No mining, no fees, no gas. Participation itself is the reward[...]
+    <div class="divider"></div>
+    <div class="row"><span class="row-label">Responsibility</span><span class="row-val">UNITT issuance · reward calculation · supply management · velocity measurement · scarcity adjustment</span><[...]
+    <div class="row"><span class="row-label">Core mechanisms</span><span class="row-val">R = v_tx × r_s × C_V · decimal scarcity algorithm · 30-day rolling velocity average · PI controller volati[...]
+    <div class="row"><span class="row-label">What it receives</span><span class="row-val">Validated transaction records from Layer 2 · integrity clearance from Layer 4 · designation tags for reward [...]
+    <div class="row"><span class="row-label">What it provides</span><span class="row-val">Minted UNITT rewards · current reward rate R_t · velocity state variables · supply metrics</span></div>
+    <div class="row"><span class="row-label">Key property</span><span class="row-val">Replaces mining, fees, and gas simultaneously. The transaction is the reward event. No external energy extraction.[...]
+    <div class="interface">Interface up → <span>Integrity Layer</span> receives reward packages for validation before release. Interface down → <span>Infrastructure Layer</span> for validated tran[...]
+  </div>
+</div>
+
+<!-- Layer 4 -->
+<div class="layer" onclick="toggle('l4')">
+  <div class="layer-header">
+    <span class="layer-num l4">Layer 4</span>
+    <span class="layer-title">Integrity Layer</span>
+    <span class="layer-tag">Sentinel · anti-manipulation · escrow · resolution · entropy detection</span>
+    <span class="chevron" id="l4-chev">▼</span>
+  </div>
+  <div class="layer-body" id="l4-body">
+    <p>The immune system of the protocol. Watches reward generation for manipulation without touching settled transactions or user-owned balances. When anomalies are detected, rewards are escrowed —[...]
+    <div class="divider"></div>
+    <div class="row"><span class="row-label">Responsibility</span><span class="row-val">Pattern detection · reward escrow · collusion resistance · resolution pathway management · anti-farming enfo[...]
+    <div class="row"><span class="row-label">Core mechanisms</span><span class="row-val">Federated Sentinel · FoolsGold defense · Shannon entropy algorithm (H_min threshold) · daily wallet cap (C_w[...]
+    <div class="row"><span class="row-label">What it receives</span><span class="row-val">Reward packages from Layer 3 · transaction graphs from Layer 2 · reputation scores from Layer 6</span></div>
+    <div class="row"><span class="row-label">What it provides</span><span class="row-val">Cleared rewards to participants · escrowed rewards to resolution pool · organic scores (P_org) back to Layer[...]
+    <div class="row"><span class="row-label">Key property</span><span class="row-val">Operates on newly minted rewards only. User-owned balances and settled transactions are never touched. Participant[...]
+    <div class="interface">Interface up → <span>Market Layer</span> provides organic scores that affect merchant tier access. Interface down → <span>Economic Layer</span> for reward interception a[...]
+  </div>
+</div>
+
+<!-- Layer 5 -->
+<div class="layer" onclick="toggle('l5')">
+  <div class="layer-header">
+    <span class="layer-num l5">Layer 5</span>
+    <span class="layer-title">Market Layer</span>
+    <span class="layer-tag">Lex Merchant · UBL · reputation-collateralized trade · exchange pools</span>
+    <span class="chevron" id="l5-chev">▼</span>
+  </div>
+  <div class="layer-body" id="l5-body">
+    <p>The participant-facing economic environment. Where ordinary commerce happens. Translates the protocol's lower layer guarantees into practical trade relationships. UBL provides the entry point f[...]
+    <div class="divider"></div>
+    <div class="row"><span class="row-label">Responsibility</span><span class="row-val">Commerce facilitation · merchant trust tiers · UBL task distribution · exchange pool operation · convertibil[...]
+    <div class="row"><span class="row-label">Core mechanisms</span><span class="row-val">Lex Merchant Protocol · reputation-collateralized trade tiers · ZK receipt verification · UBL human challeng[...]
+    <div class="row"><span class="row-label">What it receives</span><span class="row-val">Cleared UNITT rewards from Layer 4 · reputation scores from Layer 6 · organic scores from Layer 4 · velocit[...]
+    <div class="row"><span class="row-label">What it provides</span><span class="row-val">Converted currency to participants via exchange pools · UBL task completions to Layer 4 integrity scoring · [...]
+    <div class="row"><span class="row-label">Exchange pool interface</span><span class="row-val">Participants select pool and conversion currency. Reward split between pool operator and participant is[...]
+    <div class="row"><span class="row-label">Key property</span><span class="row-val">Convertibility without extraction. Pools compete for transactions by offering better reward retention splits. No s[...]
+    <div class="interface">Interface up → <span>Governance Layer</span> for parameter adjustment requests and pool operator registration. Interface out → <span>External systems</span> via exchange[...]
+  </div>
+</div>
+
+<!-- Layer 6 -->
+<div class="layer" onclick="toggle('l6')">
+  <div class="layer-header">
+    <span class="layer-num l6">Layer 6</span>
+    <span class="layer-title">Reputation Layer</span>
+    <span class="layer-tag">R_p engine · decay · jury · governance voting power</span>
+    <span class="chevron" id="l6-chev">▼</span>
+  </div>
+  <div class="layer-body" id="l6-body">
+    <p>The trust and accountability substrate that runs alongside all other layers. Reputation cannot be bought, transferred, or inherited — it must be earned through verified participation. It deca[...]
+    <div class="divider"></div>
+    <div class="row"><span class="row-label">Responsibility</span><span class="row-val">Reputation calculation · decay management · jury selection and operation · governance power weighting · infr[...]
+    <div class="row"><span class="row-label">Core mechanisms</span><span class="row-val">R_p(i) = Σ(w_j·R_j + w_l·R_l + w_c·R_c) · exponential decay (180-day half-life) · VP = (R_p·w_r) + √(S[...]
+    <div class="row"><span class="row-label">What it receives</span><span class="row-val">Jury voting outcomes · UBL completion records from Layer 5 · commerce quality signals from Layer 4 · infrac[...]
+    <div class="row"><span class="row-label">What it provides</span><span class="row-val">Reputation scores to all layers · voting power to Layer 7 · merchant tier eligibility to Layer 5 · jury poo[...]
+    <div class="row"><span class="row-label">Key property</span><span class="row-val">Reputation informs governance weight but cannot override human majority. Capital can influence direction but canno[...]
+    <div class="interface">Interface up → <span>Governance Layer</span> provides voting power inputs. Interface down → all layers receive reputation signals for access and trust decisions.</div>
+  </div>
+</div>
+
+<!-- Layer 7 -->
+<div class="layer" onclick="toggle('l7')">
+  <div class="layer-header">
+    <span class="layer-num l7">Layer 7</span>
+    <span class="layer-title">Governance Layer</span>
+    <span class="layer-tag">Constitutional constraints · proposals · parameter adjustment · emergency protocol</span>
+    <span class="chevron" id="l7-chev">▼</span>
+  </div>
+  <div class="layer-body" id="l7-body">
+    <p>The parameter adjustment and constitutional enforcement layer. Governance can tune the protocol but cannot violate constitutional guarantees — those are enforced at the contract layer and are[...]
+    <div class="divider"></div>
+    <div class="row"><span class="row-label">Responsibility</span><span class="row-val">Parameter governance · constitutional enforcement · proposal management · emergency response · protocol evol[...]
+    <div class="row"><span class="row-label">Core mechanisms</span><span class="row-val">Hybrid quadratic voting · human majority constraint · three proposal classes (tuning/structural/emergency) ·[...]
+    <div class="row"><span class="row-label">Proposal classes</span><span class="row-val">Tuning (20% quorum, 24h lock) · Structural (40% quorum, 7d lock) · Emergency (66% quorum, instant, 48h auto-[...]
+    <div class="row"><span class="row-label">What it receives</span><span class="row-val">Voting power from Layer 6 · parameter adjustment proposals from any participant · emergency signals from Lay[...]
+    <div class="row"><span class="row-label">What it provides</span><span class="row-val">Updated parameters to all lower layers · constitutional constraint enforcement · protocol treasury allocatio[...]
+    <div class="row"><span class="row-label">Constitutional guarantees</span><span class="row-val">Voluntary participation · right to exit · property sovereignty · mandatory human mitigation · due[...]
+    <div class="interface">Interface down → all layers receive parameter updates. Constitutional constraints cannot be overridden by any governance vote regardless of majority size.</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggle(id) {
+  const body = document.getElementById(id + '-body');
+  const chev = document.getElementById(id + '-chev');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
+</script>
