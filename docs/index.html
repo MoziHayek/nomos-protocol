@@ -4,17 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Nomos Protocol — Documentation</title>
-  <meta http-equiv="refresh" content="0;url=nomos_protocol_stack.html">
+  <meta name="description" content="Nomos Protocol documentation and architecture overview.">
   <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f7f8fa; color:#111; }
-    a { color:#0366d6; }
-    .box { text-align:center; padding:1rem; }
+    :root{--bg:#0f1724;--card:#ffffff;--muted:#6b7280;--accent:#4f46e5}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbfdff 0%,#f3f6ff 100%);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial;color:var(--bg)}
+    .wrap{max-width:900px;margin:48px auto;padding:24px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#eef2ff,#e9f7f3);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:8px 0 18px;color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .card{background:var(--card);border-radius:12px;padding:14px;border:1px solid #eef2f6;box-shadow:0 4px 10px rgba(15,23,36,0.04)}
+    .card h3{margin:0 0 8px;font-size:14px}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:13px}
+    .btn{display:inline-block;padding:8px 10px;border-radius:8px;background:var(--accent);color:white;text-decoration:none;font-size:13px}
+    footer{margin-top:22px;color:var(--muted);font-size:13px}
+    .muted-link{color:var(--muted);text-decoration:underline}
   </style>
 </head>
 <body>
-  <div class="box">
-    <p>Redirecting to <a href="nomos_protocol_stack.html">nomos_protocol_stack.html</a></p>
-    <p>If you are not redirected automatically, click the link above.</p>
+  <div class="wrap">
+    <header>
+      <div class="logo">N</div>
+      <div>
+        <h1>Nomos Protocol — Documentation</h1>
+        <p class="lead">Architecture overview, specifications, and guides. Select a page below to view details.</p>
+      </div>
+    </header>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Protocol stack (visual)</h3>
+        <p>Interactive layered architecture page describing identity → governance.</p>
+        <a class="btn" href="nomos_protocol_stack.html">Open stack</a>
+      </div>
+
+      <div class="card">
+        <h3>Raw file</h3>
+        <p>Open the raw HTML source on GitHub (useful for debugging or CDN previews).</p>
+        <a class="btn" href="https://raw.githubusercontent.com/MoziHayek/nomos-protocol/main/docs/nomos_protocol_stack.html" target="_blank">Open raw</a>
+      </div>
+
+      <div class="card">
+        <h3>Quick preview (cdn)</h3>
+        <p>Render immediately via raw.githack or jsDelivr without enabling Pages.</p>
+        <a class="btn" href="https://raw.githack.com/MoziHayek/nomos-protocol/main/docs/nomos_protocol_stack.html" target="_blank">raw.githack</a>
+        <span style="display:inline-block;width:8px"></span>
+        <a class="btn" href="https://cdn.jsdelivr.net/gh/MoziHayek/nomos-protocol@main/docs/nomos_protocol_stack.html" target="_blank">jsDelivr</a>
+      </div>
+    </div>
+
+    <footer>
+      <div>To publish this at the repository root, enable GitHub Pages: Settings → Pages → Branch: <strong>main</strong> → Folder: <strong>/docs</strong>.</div>
+      <div style="margin-top:6px">Expected Pages URL after enabling: <a class="muted-link" href="https://mozihayek.github.io/nomos-protocol/" target="_blank">https://mozihayek.github.io/nomos-protocol/</a></div>
+    </footer>
   </div>
 </body>
 </html>
