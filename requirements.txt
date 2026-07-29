@@ -1,0 +1,4 @@
+# requirements for running simulations and tests
+numpy
+matplotlib
+pytest
